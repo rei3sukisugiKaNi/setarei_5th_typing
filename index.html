@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>setareiASMR 5TH ANNIVERSARY</title>
+  <style>
+    @font-face {
+      font-family: 'ShineCaption';
+      src: url('./assets/fonts/しねきゃぷしょん.ttf') format('truetype');
+    }
+    body {
+      background-color: #fdfcf7;
+      font-family: 'ShineCaption', sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #cd7d7f;
+      margin-bottom: 0.5rem;
+    }
+    #startButton, #restartButton {
+      font-size: 1.0rem;
+      padding: 8px 16px;
+      cursor: pointer;
+      background-color: #cd7d7f;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      transition: background-color 0.3s;
+    }
+    #startButton:hover, #restartButton:hover {
+      background-color: #b06466;
+    }
+    #muteButton {
+      font-size: 0.5rem;
+      padding: 4px 8px;
+      cursor: pointer;
+      background-color: #ccc;
+      color: #333;
+      border: none;
+      border-radius: 4px;
+      margin-top: 5px;
+    }
+    #kana {
+      font-size: 2.8rem;
+      margin-top: 20px;
+    }
+    #romaji {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .notice {
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 10px;
+    }
+    #game-screen {
+      display: none;
+      background-image: url('haikei.jpeg');
+      background-repeat: no-repeat;
+      background-size: contain; /* 元画像の縦横比を保って全体を表示 */
+      background-position: center top;
+      padding: 30px;
+      border-radius: 12px;
+      margin: 40px auto;
+      max-width: 800px;
+      color: white;
+      font-size: 2rem;
+      font-family: 'ShineCaption', sans-serif;
+    }
+    #timer {
+      font-size: 15px; /* 残り時間の文字サイズ */
+      color: white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    #result-screen {
+      display: block;
+      background-image: url('haikei.jpeg');
+      background-size: cover;
+    }
+    #result {
+      font-family: 'ShineCaption', sans-serif;
+      color: white;
+      font-size: 20px;
+      margin-top: 30px;
+      line-height: 1.6;
+    }
+    #result .rank {
+      font-size: 36px;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- タイトル画面 -->
+  <div id="title-screen">
+    <img src="banner.jpg" alt="Banner" style="max-width: 70%; height: auto;" />
+    <h1>setareiASMR 5TH ANNIVERSARY</h1>
+    <p class="description">2025/6/28 世田れい活動5周年をお祝いするタイピングゲームです。</p>
+    <p class="description">世田れいさんに関連するお題がランダムで表示されます。</p>
+    <p class="notice" style="color: red;">センシティブ注意</p>
+    <p class="notice">※ 半角英字で入力してください</p>
+    <button id="startButton">🧸start</button>
+    <br><br><br>
+    <p class="notice">※ このゲームはれいさんご本人およびれいさんファンの方に遊んでいただくことを前提に制作しています。</p>
+  </div>
+
+  <!-- ゲーム画面 -->
+  <div id="game-screen">
+    <p id="kana"></p>
+    <p id="romaji"></p>
+    <p id="timer">Time: 60s</p>
+    <p id="result"></p>
+    <button id="restartButton">もう一回する</button>
+    <br><br>
+    <button id="muteButton">🔊 BGM ON</button>
+  </div>
+
+  <div id="typing-area">
+  <div id="kana"></div>
+  <div id="romaji"></div>
+  </div>
+
+  <div id="result-screen">
+  <div id="result"></div>
+  </div>
+
+  <audio id="bgm" src="bgm.mp3" loop></audio>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
