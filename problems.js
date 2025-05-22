@@ -47,8 +47,8 @@ export const problemList = [
     kana:  "んー"
   },
   {
-    kanji: "アレクサ！時差を縮めて！",
-    kana:  "あれくさ！じさをちぢめて！"
+    kanji: "アレクサ！時差をなくして！",
+    kana:  "あれくさ！じさをなくして！"
   },
     
 // シチュボ・台詞
@@ -65,8 +65,8 @@ export const problemList = [
     kana:  "せんぱい、ひとりでしたりするんですか"
   },
   {
-    kanji: "声聞かせてください",
-    kana:  "こえきかせてください"
+    kanji: "声聞かせて",
+    kana:  "こえきかせて"
   },
   {
     kanji: "田中さんのこと嘘つきって呼びます",
@@ -85,8 +85,12 @@ export const problemList = [
     kana:  "ねおちらじおぞくへんなにとぞ"
   },
   {
+    kanji: "何卒（なにそつ）",
+    kana:  "なにそつ"
+  },
+  {
     kanji: "先輩実はドMでしょ",
-    kana:  "せんぱいじつはどMでしょ"
+    kana:  "せんぱいじつはどmでしょ"
   },
   {
     kanji: "ちゃんと舌出して",
@@ -109,8 +113,8 @@ export const problemList = [
     kana:  "わたしがきめるの"
   },
   {
-    kanji: "summertimeに衝撃を受ける",
-    kana:  "summertimeにしょうげきをうける"
+    kanji: "summertimeの衝撃",
+    kana:  "summertimeのしょうげき"
   },
   {
     kanji: "気持ちいい事好きですもんね",
@@ -178,7 +182,7 @@ export const problemList = [
   },
   {
     kanji: "きもちいと何も考えられないの？",
-    kana:  "きもちいとなにもかんがえられないの"
+    kana:  "きもちいとなにもかんがえられないの？"
   },
   {
     kanji: "やだ",
@@ -205,8 +209,8 @@ export const problemList = [
     kana:  "あーそれやばい"
   },
   {
-    kanji: "すみませんキャンディキスゲーム会場はどちらですか",
-    kana:  "すみませんきゃんでぃきすげーむかいじょうはどちらですか"
+    kanji: "すみません。キャンディキスゲーム会場はどちらですか",
+    kana:  "すみません。きゃんでぃきすげーむかいじょうはどちらですか"
   },
   {
     kanji: "スペアリブ",
@@ -306,8 +310,8 @@ export const problemList = [
     kana:  "あわぶろますたー"
   },
   {
-    kanji: "ハーレム建設",
-    kana:  "はーれむけんせつ"
+    kanji: "ハーレムつくりにきてる",
+    kana:  "はーれむつくりにきてる"
   },
   {
     kanji: "お揃いパジャマ",
@@ -340,6 +344,14 @@ export const problemList = [
   {
     kanji: "ベッドメイクの天才",
     kana:  "べっどめいくのてんさい"
+  },
+  {
+    kanji: "言葉責め",
+    kana:  "ことばぜめ"
+  },
+  {
+    kanji: "メイドコス洋服抜き",
+    kana:  "めいどこすようふくぬき"
   },
   {
     kanji: "じゃあ順番に性癖コメントして",
