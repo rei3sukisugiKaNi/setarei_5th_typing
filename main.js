@@ -154,9 +154,9 @@ function endGame() {
   const total = score + miss;
   const speed = (score / 60).toFixed(2);
   let rank = "C";
-  if (score >= 300) rank = "S";
-  else if (score >= 250) rank = "A";
-  else if (score >= 200) rank = "B";
+  if (score >= 350) rank = "S";
+  else if (score >= 280) rank = "A";
+  else if (score >= 210) rank = "B";
 
   resultDisplay.innerHTML = `
   おつかれさまでした<br>
