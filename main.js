@@ -1,4 +1,5 @@
 // main.js
+
 import { problemList } from './problems.js';
 
 let currentIndex = 0;
@@ -9,20 +10,21 @@ let miss = 0;
 let timeLeft = 60;
 let timer;
 let bgmPlaying = true;
-let shuffledProblems = []; // 2問目以降のランダム用
-const bgm = new Audio("./bgm.mp3");
+let bgm = new Audio("./assets/bgm.mp3");
 bgm.loop = true;
-bgm.volume = 0.3; // 🔉 音量を調整（0.0 ～ 1.0）
+bgm.volume = 0.3;
 
-const titleScreen = document.getElementById("titleScreen");
-const gameScreen = document.getElementById("gameScreen");
+let shuffledProblems = []; // 2問目以降のランダム用
+
 const startButton = document.getElementById("startButton");
-const timerDisplay = document.getElementById("small-timer");
+const restartButton = document.getElementById("restartButton");
+const gameScreen = document.getElementById("gameScreen");
+const titleScreen = document.getElementById("titleScreen");
 const kanaText = document.getElementById("kanaText");
 const kanjiText = document.getElementById("kanjiText");
 const inputBox = document.getElementById("inputBox");
+const timerDisplay = document.getElementById("small-timer");
 const resultDisplay = document.getElementById("result");
-const restartButton = document.getElementById("restartButton");
 const muteButton = document.getElementById("muteButton");
 
 function shuffleArray(array) {
@@ -37,36 +39,41 @@ function shuffleArray(array) {
 function startGame() {
   titleScreen.style.display = "none";
   gameScreen.style.display = "block";
+  resultDisplay.innerHTML = "";
   restartButton.style.display = "none";
-  resultDisplay.textContent = "";
+  inputBox.style.display = "inline-block";
 
   score = 0;
   miss = 0;
   timeLeft = 60;
   currentIndex = 0;
-  currentProblem = null;
   currentKana = "";
-  
+  currentProblem = null;
+
+  const rest = problemList.slice(1); // 1問目を除く
+  shuffledProblems = shuffleArray(rest);
+
   bgm.play();
-  bgmPlaying = true;
+  bgm.muted = !bgmPlaying;
   updateMuteButton();
+
   nextProblem();
   updateTimer();
   inputBox.value = "";
   inputBox.focus();
 
-
   timer = setInterval(() => {
     timeLeft--;
     updateTimer();
     if (timeLeft <= 0) {
+      clearInterval(timer);
       endGame();
     }
   }, 1000);
 }
 
 function updateTimer() {
-  timerDisplay.textContent = `残り時間${timeLeft}秒`;
+  timerDisplay.textContent = `残り${timeLeft}秒`;
 }
 
 function nextProblem() {
@@ -88,7 +95,7 @@ function nextProblem() {
 }
 
 function handleInput(e) {
-  const typed = e.target.value.normalize("NFC").trim(); // ←★ここで normalize("NFC") を追加！
+  const typed = e.target.value.normalize("NFC").trim();
   if (typed === currentKana) {
     score += currentKana.length;
     nextProblem();
@@ -98,10 +105,9 @@ function handleInput(e) {
 }
 
 function endGame() {
-  clearInterval(timer);
+  inputBox.style.display = "none";
   kanjiText.textContent = "";
   kanaText.textContent = "";
-  inputBox.style.display = "none";
 
   const speed = (score / 60).toFixed(2);
   let rank = "C";
@@ -129,14 +135,14 @@ function toggleMute() {
 }
 
 startButton.addEventListener("click", () => {
+  document.addEventListener("click", () => inputBox.focus());
   startGame();
 });
 
 restartButton.addEventListener("click", () => {
-  inputBox.style.display = "inline-block";
+  document.addEventListener("click", () => inputBox.focus());
   startGame();
 });
 
 muteButton.addEventListener("click", toggleMute);
 inputBox.addEventListener("input", handleInput);
-document.addEventListener("click", () => inputBox.focus());
