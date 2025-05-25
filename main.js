@@ -17,13 +17,13 @@ let bgm = new Audio("./bgm.mp3");
 bgm.loop = true;
 bgm.volume = 0.3; // 🔉 音量を調整（0.0 ～ 1.0）
 
+const startButton = document.getElementById("startButton");
+const timerDisplay = document.getElementById("timer");
 const kanaDisplay = document.getElementById("kana");
 const romajiDisplay = document.getElementById("romaji");
 const resultDisplay = document.getElementById("result");
-const startButton = document.getElementById("startButton");
-const muteButton = document.getElementById("muteButton");
-const timerDisplay = document.getElementById("timer");
 const restartButton = document.getElementById("restartButton");
+const muteButton = document.getElementById("muteButton");
 
 function startGame() {
   document.getElementById("title-screen").style.display = "none";
