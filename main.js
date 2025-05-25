@@ -15,6 +15,7 @@ let timer;
 let bgmPlaying = false;
 let bgm = new Audio("./bgm.mp3");
 bgm.loop = true;
+bgm.volume = 0.3; // 🔉 音量を調整（0.0 ～ 1.0）
 
 const kanaDisplay = document.getElementById("kana");
 const romajiDisplay = document.getElementById("romaji");
