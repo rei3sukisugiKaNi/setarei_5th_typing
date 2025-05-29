@@ -1,4 +1,4 @@
-// main.js
+// main.js（PC版用：一問目固定・2問目以降ランダム・シークバー対応）
 
 import { problemList } from './problems.js';
 import { inputMap } from './input_map.js';
@@ -15,7 +15,7 @@ let timer;
 let bgmPlaying = false;
 let bgm = new Audio("./bgm.mp3");
 bgm.loop = true;
-bgm.volume = 0.3; // 🔉 音量を調整（0.0 ～ 1.0）
+bgm.volume = 0.3;
 
 const kanaDisplay = document.getElementById("kana");
 const romajiDisplay = document.getElementById("romaji");
@@ -24,6 +24,43 @@ const startButton = document.getElementById("startButton");
 const muteButton = document.getElementById("muteButton");
 const timerDisplay = document.getElementById("timer");
 const restartButton = document.getElementById("restartButton");
+
+let shuffledProblems = [];
+
+// ✅ シークバー追加
+const progressContainer = document.createElement("div");
+progressContainer.id = "progress-container";
+progressContainer.style.cssText = `
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  width: 90%;
+  height: 6px;
+  background-color: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+  display: none;
+  z-index: 1;
+`;
+const progressBar = document.createElement("div");
+progressBar.id = "progress-bar";
+progressBar.style.cssText = `
+  width: 0%;
+  height: 100%;
+  background-color: red;
+  transition: width 1s linear;
+`;
+progressContainer.appendChild(progressBar);
+document.getElementById("game-screen").appendChild(progressContainer);
+
+function shuffleArray(array) {
+  const copied = [...array];
+  for (let i = copied.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copied[i], copied[j]] = [copied[j], copied[i]];
+  }
+  return copied;
+}
 
 function startGame() {
   document.getElementById("title-screen").style.display = "none";
@@ -41,25 +78,41 @@ function startGame() {
   bgm.play();
   bgmPlaying = true;
   updateMuteButton();
+
+  // ✅ 問題シャッフル（1問目以外）
+  const rest = problemList.slice(1);
+  shuffledProblems = shuffleArray(rest);
+
   nextProblem();
   updateTimer();
+
+  // ✅ シークバー初期化
+  progressBar.style.width = "0%";
+  progressContainer.style.display = "block";
+  let elapsed = 0;
+  clearInterval(timer);
   timer = setInterval(() => {
     timeLeft--;
+    elapsed++;
     updateTimer();
+    progressBar.style.width = `${(elapsed / 60) * 100}%`;
     if (timeLeft <= 0) endGame();
   }, 1000);
 }
 
 function updateTimer() {
-  timerDisplay.textContent = `残り時間: ${timeLeft}秒`;
+  timerDisplay.textContent = ""; // 非表示に
 }
 
 function nextProblem() {
   if (currentIndex === 0) {
     currentProblem = problemList[0];
   } else {
-    const rest = problemList.slice(1);
-    currentProblem = rest[Math.floor(Math.random() * rest.length)];
+    if (currentIndex - 1 >= shuffledProblems.length) {
+      endGame();
+      return;
+    }
+    currentProblem = shuffledProblems[currentIndex - 1];
   }
   currentKana = currentProblem.kana;
   currentRomajiCandidates = generateRomajiCandidates(currentKana);
@@ -73,8 +126,6 @@ function generateRomajiCandidates(kana) {
   let list = [""];
   for (let i = 0; i < kana.length; ) {
     let matched = false;
-
-    // 「っ」の特別処理
     if (kana[i] === "っ") {
       const next = kana.slice(i + 1, i + 3);
       const single = kana[i + 1];
@@ -94,7 +145,6 @@ function generateRomajiCandidates(kana) {
       i++;
       continue;
     }
-
     for (let len = 2; len > 0; len--) {
       const part = kana.slice(i, i + len);
       if (inputMap[part]) {
@@ -110,7 +160,6 @@ function generateRomajiCandidates(kana) {
         break;
       }
     }
-
     if (!matched) {
       for (let j = 0; j < list.length; j++) list[j] += kana[i];
       i++;
@@ -151,7 +200,9 @@ function endGame() {
   document.removeEventListener("keydown", handleKeydown);
   kanaDisplay.textContent = "";
   romajiDisplay.textContent = "";
-  document.getElementById("timer").textContent = "";
+  timerDisplay.textContent = "";
+  progressBar.style.width = "100%"; // ✅ 最後まで伸ばす
+
   const total = score + miss;
   const speed = (score / 60).toFixed(2);
   let rank = "C";
