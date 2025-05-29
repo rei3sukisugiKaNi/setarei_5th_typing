@@ -45,7 +45,9 @@
     }
     #kana {
       font-size: 2.8rem;
-      margin-top: 20px;
+      word-break: break-word;
+      line-height: 1.4;
+      margin-top: 10px;
     }
     #romaji {
       font-size: 1.5rem;
@@ -59,6 +61,8 @@
     #game-screen {
       display: none; /* 初期は表示しない */
       position: relative; /* ★これを追加！ */
+      height: 300px; /* たとえば300pxに固定（スマホ向け調整OK） */
+      overflow: hidden; /* はみ出るお題が出ても背景からはみ出さない */
       background-image: url('haikei.jpeg');
       background-repeat: no-repeat;
       background-size: contain; /* 元画像の縦横比を保って全体を表示 */
