@@ -58,6 +58,7 @@
     }
     #game-screen {
       display: none; /* 初期は表示しない */
+      position: relative; /* ★これを追加！ */
       background-image: url('haikei.jpeg');
       background-repeat: no-repeat;
       background-size: contain; /* 元画像の縦横比を保って全体を表示 */
@@ -100,13 +101,13 @@
   <div id="title-screen">
     <img src="banner.jpg" alt="Banner" style="max-width: 70%; height: auto;" />
     <h1>setareiASMR 5TH ANNIVERSARY</h1>
-    <p class="description">2025/6/28 世田れい活動5周年のお祝いタイピングゲームです。</p>
-    <p class="description">世田れいさんに関連するお題がランダムで表示されます。</p>
-    <p class="notice" style="color: red;">センシティブ注意</p>
-    <p class="notice">※ 半角英字で入力してください</p>
+    <p class="description">2025/6/28の世田れい活動5周年のお祝いタイピングゲームです。</p>
+    <p class="description">お題はランダムで表示されます。</p>
+    <p class="notice">※半角英字で入力してください</p>
     <button id="startButton">🧸start</button>
     <br><br>
-    <p class="notice">※ このゲームは世田れいさんご本人とれいさんファンの方に遊んでいただくことを前提に制作しています。</p>
+    <p class="notice">本ゲームは世田れいさんと世田れいさんファンの方に遊んでいただくことを前提に制作しています。</p>
+    <p class="notice" style="color: red;">センシティブ注意</p>
   </div>
 
   <!-- ゲーム画面 -->
@@ -115,7 +116,7 @@
     <p id="romaji"></p>
     <p id="timer">Time: 60s</p>
     <p id="result"></p>
-    <button id="restartButton">もう一回する</button>
+    <button id="restartButton">🧸もう一回</button>
     <br><br>
     <button id="muteButton">🔊 BGM ON</button>
   </div>
