@@ -34,7 +34,7 @@ progressContainer.style.cssText = `
   position: absolute;
   bottom: 5%;
   left: 5%;
-  width: 85%;
+  width: 90%;
   height: 6px;
   background-color: #eee;
   border-radius: 3px;
