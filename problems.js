@@ -51,6 +51,10 @@ export const problemList = [
     kana:  "んー"
   },
   {
+    kanji: "したい",
+    kana:  "したい"
+  },
+  {
     kanji: "アレクサ！時差をなくして！",
     kana:  "あれくさ！じさをなくして！"
   },
