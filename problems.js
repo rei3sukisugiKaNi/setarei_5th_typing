@@ -11,8 +11,8 @@ export const problemList = [
     kana:  "れいさんだいすき"
   },
   {
-    kanji: "れいさん結婚しよ！",
-    kana:  "れいさんけっこんしよ！"
+    kanji: "もう結婚してるでしょ",
+    kana:  "もうけっこんしてるでしょ！"
   },
   {
     kanji: "世田れいasmr",
@@ -23,8 +23,8 @@ export const problemList = [
     kana:  "すきすぎてしんどい"
   },
   {
-    kanji: "お気に入り問題",
-    kana:  "おきにいりもんだい"
+    kanji: "お気に入り",
+    kana:  "おきにいり"
   },
   {
     kanji: "質問箱浄化",
@@ -105,12 +105,12 @@ export const problemList = [
     kana:  "かんさいうまれかんさいそだち"
   },
   {
-    kanji: "寝落ちラジオ続編永遠待機",
-    kana:  "ねおちらじおぞくへんえいえんたいき"
+    kanji: "寝落ちラジオ続編希望",
+    kana:  "ねおちらじおぞくへんきぼう"
   },
   {
-    kanji: "リップ音注意",
-    kana:  "りっぷおんちゅうい"
+    kanji: "吐息、リップ音注意",
+    kana:  "といき、りっぷおんちゅうい"
   },
   {
     kanji: "先輩実はドMでしょ",
@@ -133,8 +133,8 @@ export const problemList = [
     kana:  "わたしがきめるの"
   },
   {
-    kanji: "summertimeの衝撃",
-    kana:  "summertimeのしょうげき"
+    kanji: "summertime",
+    kana:  "summertime"
   },
   {
     kanji: "ヒビカセ",
@@ -331,7 +331,7 @@ export const problemList = [
   },
   {
     kanji: "充電5％になったらおやすみなさい",
-    kana:  "じゅうでん5％になったらおやすみなさい"
+    kana:  "じゅうでん5ぱーせんとになったらおやすみなさい"
   },
   {
     kanji: "ねこひゃっぴき",
