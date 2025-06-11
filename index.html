@@ -12,22 +12,22 @@
     body {
       background-color: #fdfcf7;
       font-family: 'ShineCaption', sans-serif;
-      text-align: center; /* 中央揃え */
-      padding: 30px; /* 他要素との間隔 */
+      text-align: center;
+      padding: 30px;
     }
     h1 {
-      font-size: 2.5rem; /* タイトル文字大きさ */
+      font-size: 2.5rem;
       color: #cd7d7f;
       margin-bottom: 0.5rem;
     }
     #startButton, #restartButton {
-      font-size: 1.0rem; /* ボタン文字 */
-      padding: 8px 16px; /* 内部の間隔 */
+      font-size: 1.0rem;
+      padding: 8px 16px;
       cursor: pointer;
-      background-color: #cd7d7f; /* ボタン背景 */
+      background-color: #cd7d7f;
       color: white;
-      border: none; /* 枠無し */
-      border-radius: 10px; /* ボタン角丸め */
+      border: none;
+      border-radius: 10px;
       transition: background-color 0.3s;
     }
     #startButton:hover, #restartButton:hover {
@@ -41,7 +41,7 @@
       color: #333;
       border: none;
       border-radius: 4px;
-      margin-top: 5px; /* 上に間隔 */
+      margin-top: 5px;
     }
     #kana {
       font-size: 2.8rem;
@@ -59,13 +59,13 @@
       margin-top: 10px;
     }
     #game-screen {
-      display: none; /* 初期は表示しない */
-      position: relative; /* ★これを追加！ */
-      height: 300px; /* たとえば300pxに固定（スマホ向け調整OK） */
-      overflow: hidden; /* はみ出るお題が出ても背景からはみ出さない */
+      display: none;
+      position: relative;
+      height: 300px;
+      overflow: hidden;
       background-image: url('haikei.jpeg');
       background-repeat: no-repeat;
-      background-size: contain; /* 元画像の縦横比を保って全体を表示 */
+      background-size: contain;
       background-position: center top;
       padding: 10%;
       border-radius: 12px;
@@ -76,7 +76,7 @@
       font-family: 'ShineCaption', sans-serif;
     }
     #timer {
-      font-size: 15px; /* 残り時間の文字サイズ */
+      font-size: 15px;
       color: white;
       margin-top: 10px;
       margin-bottom: 20px;
@@ -101,20 +101,17 @@
   </style>
 </head>
 <body>
-  <!-- タイトル画面 -->
   <div id="title-screen">
     <img src="banner.jpg" alt="Banner" style="max-width: 70%; height: auto;" />
     <h1>setareiASMR 5TH ANNIVERSARY</h1>
-    <p class="description">2025/6/28の世田れい活動5周年のお祝いタイピングゲームです。</p>
+    <p class="description">2025/6/28の活動5周年のお祝いタイピングゲームです。</p>
     <p class="description">お題はランダムで表示されます。</p>
     <p class="notice">※半角英字で入力してください</p>
     <button id="startButton">🧸start</button>
     <br><br>
-    <p class="notice">本ゲームは世田れいさんと世田れいさんファンの方に遊んでいただくことを前提に制作しています。</p>
-    <p class="notice" style="color: red;">センシティブ注意</p>
+    <p class="notice">本ゲームは世田れいさんと世田れいさんのファンの方に遊んでいただくことを前提に制作しています。</p>
   </div>
 
-  <!-- ゲーム画面 -->
   <div id="game-screen">
     <p id="kana"></p>
     <p id="romaji"></p>
