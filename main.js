@@ -99,11 +99,9 @@ function startGame() {
     if (timeLeft <= 0) endGame();
   }, 1000);
 }
-
 function updateTimer() {
   timerDisplay.textContent = ""; // 非表示に
 }
-
 function nextProblem() {
   if (currentIndex === 0) {
     currentProblem = problemList[0];
@@ -121,7 +119,6 @@ function nextProblem() {
   updateRomajiDisplay();
   currentIndex++;
 }
-
 function generateRomajiCandidates(kana) {
   let list = [""];
   for (let i = 0; i < kana.length; ) {
@@ -167,7 +164,6 @@ function generateRomajiCandidates(kana) {
   }
   return list;
 }
-
 function updateRomajiDisplay() {
   for (const cand of currentRomajiCandidates) {
     if (cand.toLowerCase().startsWith(inputBuffer.toLowerCase())) {
@@ -177,7 +173,6 @@ function updateRomajiDisplay() {
   }
   romajiDisplay.innerHTML = `<span style="color: red">${inputBuffer}</span>`;
 }
-
 function handleKeydown(e) {
   if (timeLeft <= 0) return;
   const key = e.key.toLowerCase();
@@ -194,7 +189,6 @@ function handleKeydown(e) {
     updateRomajiDisplay();
   }
 }
-
 function endGame() {
   clearInterval(timer);
   document.removeEventListener("keydown", handleKeydown);
@@ -211,18 +205,15 @@ function endGame() {
   else if (score >= 210) rank = "B";
 
   resultDisplay.innerHTML = `
-  おつかれさまでした<br>
   <span class="rank">ランク: ${rank}</span><br>
     正しく打ったキー: ${score}<br>
     ミスタイプ: ${miss}<br>
     平均タイプ数: ${speed} 回/秒`;
   restartButton.style.display = "inline-block";
 }
-
 function updateMuteButton() {
   muteButton.textContent = bgmPlaying ? "BGM: OFF" : "BGM: ON";
 }
-
 function toggleMute() {
   if (bgm) {
     bgmPlaying = !bgmPlaying;
@@ -230,15 +221,12 @@ function toggleMute() {
     updateMuteButton();
   }
 }
-
 startButton.addEventListener("click", () => {
   document.addEventListener("keydown", handleKeydown);
   startGame();
 });
-
 restartButton.addEventListener("click", () => {
   document.addEventListener("keydown", handleKeydown);
   startGame();
 });
-
 muteButton.addEventListener("click", toggleMute);
